@@ -1,0 +1,21 @@
+table,
+thead,
+tbody,
+th,
+tr,
+td {
+    border: 1px solid black;
+}
+
+#buttonSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.background-red {
+    background-color: red;
+}
+
+.background-blue {
+    background-color: blue;
+}

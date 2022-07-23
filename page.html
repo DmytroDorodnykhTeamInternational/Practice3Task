@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Test task
+        </title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function generateTable() {
+                console.log("generateTable was called");
+
+                const xInputValue = document.getElementById('xInput').value;
+                const yInputValue = document.getElementById('yInput').value;
+
+                if (!xInputValue) {
+                    alert('Please enter x value');
+                    return;
+                }
+                
+                if (!yInputValue) {
+                    alert('Please enter y value');
+                    return;
+                }
+                
+                generateTableHeader(xInputValue);
+                generateTableBody(xInputValue, yInputValue);
+            }
+
+            generateTableHeader = (tableRowLength) => {
+                const headSection = document.getElementById('tableHeaderElement');
+                const headerRow = document.createElement('tr');
+
+                for (let i = 0; i < tableRowLength; i++) {
+                    const element = document.createElement('th');
+                    element.textContent = `Column ${i + 1}`;
+                    headerRow.appendChild(element);
+                }
+
+                headSection.innerHTML = '';
+                headSection.appendChild(headerRow);
+            }
+
+            generateTableBody = (tableRowLength, tableRowHeight) => {
+                const bodySection = document.getElementById('tableBodyElement');
+                bodySection.innerHTML = '';
+
+                for (let j = 0; j < tableRowHeight; j++) {
+                    const tableRow = document.createElement('tr');
+
+                    for (let i = 0; i < tableRowLength; i++) {
+                        const element = document.createElement('td');
+                        if (j % 2 == 0) {
+                            element.setAttribute('class', 'background-red   ')
+                        }
+                        else {
+                            element.setAttribute('class', 'background-blue');
+                        }
+                        element.textContent = Math.random() * 200;
+                        tableRow.appendChild(element);
+                    }
+
+                    bodySection.appendChild(tableRow);
+                }
+            }
+        </script>
+
+        <div>
+            <div id="inputSection">
+                <div>
+                    <label for="x">Enter length of the array:</label>
+                    <br/>
+                    <input id="xInput" name="x"> 
+                </div>
+                <div>
+                    <label for="y">Enter height of the array:</label>
+                    <br/>
+                    <input id="yInput" name="y">
+                </div>
+            </div>
+    
+            <div id="buttonSection">
+                <button onclick="generateTable()">
+                    Generate table
+                </button>
+        
+                <div>
+                    <button onclick="addKittensToTheTable()">
+                        Add kittens
+                    </button>
+                    <button onclick="addKittensToTheTable()">
+                        Add kittens
+                    </button>
+                </div>
+            </div>
+    
+            <div id="tableSection">
+                <table>
+                    <thead id="tableHeaderElement">
+                        <tr>
+                            <th>
+                                Hello, I'm a header cell, nice to meet you!
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyElement">
+                        <tr>
+                            <td>
+                                Hello, I'm a normal cell, nice to meet you!
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
